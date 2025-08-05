@@ -1,0 +1,19 @@
+{
+  "name": "mi-primer-backend",
+  "version": "1.0.0",
+  "description": "Mi primer servidor con Node.js",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
