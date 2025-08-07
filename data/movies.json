@@ -548,5 +548,13 @@
     "plot": "After a space merchant vessel receives an unknown transmission as a distress call, one of the crew is attacked by a mysterious life form and they soon realize that its life cycle has merely begun.",
     "imdb_rating": 8.4,
     "runtime_minutes": 117
+  },
+  {
+    "id": "t500",
+    "nombre": "Superman"
+  },
+  {
+    "id": "t600",
+    "nombre": "Demon Slayer El castillo Infinito"
   }
 ]
