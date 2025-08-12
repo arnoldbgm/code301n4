@@ -130,6 +130,8 @@ app.get("/peliculas/rating-low", (req, res) => {
    Ejemplo: const id = req.params.id
 */
 
+// http://localhost:3000/peliculas/tt0078788
+
 app.get("/peliculas/:id", (req, res) => {
    try {
       const id = req.params.id; // Valor capturado del parametro dinamico
@@ -225,12 +227,45 @@ app.put("/actualizar-pelicula/:id", (req, res) => {
       const peliculaEncontrada = peliculas.find((peli) => peli.id === id);
 
       // 4. Vamos a actualizar los valores de la pelicula
-
       peliculaEncontrada.title = dataRecibida.title
 
       // 5. Vamos a cambiar el archivo de peliculas
+      fs.writeFileSync("./data/movies.json", JSON.stringify(peliculas));
 
+      res.json({
+         msg: "Pelicula actualizada correctamente"
+      })
+
+   } catch (error) {
+      res.status(500).json({
+         error: "Hubo un error inesperado en el servidor"
+      })
+   }
+})
+
+/*
+   DELETE
+   Es para eliminar informacion
+   El cliente nos debe de enviar el id de la pelicula que se va eliminar
+*/
+
+
+app.delete("/eliminar-pelicula/:id", (req, res) => {
+   try {
+      const id = req.params.id;
       
+      const data = fs.readFileSync("./data/movies.json", "utf8");
+      const peliculas = JSON.parse(data);
+
+      const peliculasActualizadas = peliculas.filter((peli) => peli.id !== id);
+
+      // VAmos a reescribir el archivo de peliculas
+
+      fs.writeFileSync("./data/movies.json", JSON.stringify(peliculasActualizadas));
+
+      res.json({
+         msg: "Pelicula eliminada correctamente"
+      })
 
    } catch (error) {
       res.status(500).json({
